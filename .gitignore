@@ -1,0 +1,9 @@
+/node_modules/
+/build/
+npm-debug.log
+webpack-assets.json
+webpack-stats.json
+/assets/bundle.min.js
+.*
+!.gitignore
+!.babelrc
