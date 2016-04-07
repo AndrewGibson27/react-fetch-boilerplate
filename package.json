@@ -19,7 +19,7 @@
     "babel-node": "babel-node",
     "build-client": "NODE_ENV=client-prod webpack --config webpack.config.prod.js",
     "build-node": "NODE_ENV=server-prod babel -d ./server/prod ./server/**",
-    "build": "npm run clean && npm run build-client && npm run build-node && npm run build-server-react",
+    "build": "npm run clean && npm run build-client && npm run build-node",
     "start": "NODE_ENV=production node server/prod/main.js",
     "clean": "rimraf -f server/prod && rimraf -f assets/img/prod && rimraf -f assets/js && rimraf -f assets/css"
   },
