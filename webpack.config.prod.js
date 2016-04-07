@@ -39,7 +39,7 @@ module.exports = {
         
         {
             test: webpack_isomorphic_tools_plugin.regular_expression('images'),
-            loader: 'file-loader?name=img/[name].[ext]?[hash]'
+            loader: 'file-loader?name=img/prod/[name].[ext]?[hash]'
         }
     ]
   }

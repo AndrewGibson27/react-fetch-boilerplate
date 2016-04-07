@@ -22,7 +22,7 @@
     "build-server-react": "NODE_ENV=client-prod babel -d ./build/components ./src/components",
     "build": "npm run clean && npm run build-client && npm run build-node && npm run build-server-react",
     "start": "node server/prod/main.js",
-    "clean": "rimraf -f build && rimraf -f server/prod && rimraf -f assets/bundle.min.js"
+    "clean": "rimraf -f build && rimraf -f server/prod && rimraf -f assets/img/prod && rimraf -f assets/bundle.min.js"
   },
   "devDependencies": {
     "babel-cli": "^6.6.0",
