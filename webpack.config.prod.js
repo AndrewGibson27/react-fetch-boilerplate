@@ -9,7 +9,7 @@ module.exports = {
   entry: './src/index',
   
   output: {
-        path: path.join(__dirname, 'assets'),
+        path: path.join(__dirname, 'assets/js'),
         filename: 'bundle.min.js?[hash]',
         publicPath: './'
   },
@@ -39,7 +39,7 @@ module.exports = {
         
         {
             test: webpack_isomorphic_tools_plugin.regular_expression('images'),
-            loader: 'file-loader?name=img/prod/[name].[ext]?[hash]'
+            loader: 'file-loader?name=../img/prod/[name].[ext]?[hash]'
         }
     ]
   }
