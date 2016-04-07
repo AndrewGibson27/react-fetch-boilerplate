@@ -9,7 +9,6 @@ var webpack_isomorphic_tools_plugin =
 module.exports = {
   entry: [
         'webpack-dev-server/client?http://127.0.0.1:8080/',
-        'webpack/hot/only-dev-server',
         './src/index'
   ],
   
@@ -20,7 +19,6 @@ module.exports = {
   },
   
   plugins: [
-        new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         webpack_isomorphic_tools_plugin
   ],
@@ -34,7 +32,7 @@ module.exports = {
             },
         
             {
-                test: /\.scss$/,
+                test: webpack_isomorphic_tools_plugin.regular_expression('style_modules'),
                 loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]---[local]---[hash:base64:5]!sass-loader'
             },
             
