@@ -1,23 +1,23 @@
-var gulp = require('gulp');
-    /*mainBowerFiles = require('main-bower-files'),
-    concat = require('gulp-concat'),
-    rename = require('gulp-rename'),
-    uglify = require('gulp-uglify'),
-    gulpFilter = require('gulp-filter'),
-    addsrc = require('gulp-add-src'),
-    minifyCss = require('gulp-minify-css'),
-    replace = require('gulp-replace'),
-	order = require("gulp-order"),
-	postcss = require('gulp-postcss'),
-    autoprefixer = require('autoprefixer');*/
-    
-gulp.task('move', function(){
-	gulp.src('./assets/**')
-		.pipe(gulp.dest('./build/assets'));
-		
-	gulp.src('./templates/prod.jade')
-	     .pipe(gulp.dest('./build/templates'));
-	     
-	gulp.src('./webpack-isomorphic-tools-config.js')
-	     .pipe(gulp.dest('./build'));
+var gulp = require('gulp'),
+    autoprefixer = require('autoprefixer'),
+    postcss = require('gulp-postcss');
+
+gulp.task('autoprefixer', function(){
+	gulp.src('./assets/css/bundle.min.css')
+	    .pipe(postcss([ 
+	        autoprefixer({ 
+	            browsers: [
+                    'Firefox >= 1',
+                    'Chrome >= 1',
+                    'Safari >= 5',
+                    'Edge >= 1',
+                    'IE >= 9',
+                    'iOS >= 6',
+                    'ChromeAndroid >= 1',
+                    'FirefoxAndroid >= 1',
+                    'Android >= 4'
+			    ]
+	        }) 
+	    ]))
+        .pipe(gulp.dest('./assets/css'));
 });
