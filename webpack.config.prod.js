@@ -36,7 +36,7 @@ module.exports = {
         
         {
             test: webpack_isomorphic_tools_plugin.regular_expression('style_modules'),
-            loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]---[local]---[hash:base64:5]!sass-loader')
+            loader: ExtractTextPlugin.extract('css-loader?modules&importLoaders=1&localIdentName=[name]---[local]---[hash:base64:5]!sass-loader')
         },
         
         {
