@@ -3,7 +3,8 @@
 npm-debug.log
 webpack-assets.json
 webpack-stats.json
-/assets/bundle.min.js
+/assets/js/
+/assets/css/
 /assets/img/prod
 /server/prod
 .*
