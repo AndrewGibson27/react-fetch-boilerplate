@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var Webpack_isomorphic_tools_plugin = require('webpack-isomorphic-tools/plugin')
 var webpack_isomorphic_tools_plugin = 
@@ -21,7 +22,8 @@ module.exports = {
             compressor: {
                 warnings: false
             }
-        })
+        }),
+        new ExtractTextPlugin("../css/bundle.min.css?[hash]")
   ],
   
   module: {
@@ -32,10 +34,10 @@ module.exports = {
             include: path.join(__dirname, 'src')
         },
         
-        /*{
-            test: /\.scss$/,
-            loader: ExtractTextPlugin.extract('style-loader', 'css-loader?-autoprefixer&modules&importLoaders=1&localIdentName=[name]---[local]---[hash:base64:5]!sass-loader')
-        },*/
+        {
+            test: webpack_isomorphic_tools_plugin.regular_expression('style_modules'),
+            loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]---[local]---[hash:base64:5]!sass-loader')
+        },
         
         {
             test: webpack_isomorphic_tools_plugin.regular_expression('images'),
