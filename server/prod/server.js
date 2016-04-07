@@ -26,6 +26,8 @@ var _url2 = _interopRequireDefault(_url);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+require("babel-register");
+
 var developing = process.env.NODE_ENV === 'server-dev';
 var app = (0, _express2.default)();
 
@@ -41,7 +43,7 @@ if (developing) {
 
     app.use(_path2.default.resolve(__dirname, '/assets/'), (0, _proxyMiddleware2.default)(_url2.default.parse('http://localhost:8080/assets/')));
 } else {
-    entry_path = '../../build/components/App.js';
+    entry_path = '../../src/components/App.js';
     template = 'prod';
 
     app.use(_express2.default.static(_path2.default.resolve(__dirname, '../../assets')));

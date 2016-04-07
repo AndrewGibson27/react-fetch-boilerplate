@@ -18,6 +18,9 @@
     },
     "server-prod": {
       "presets": ["es2015", "react"]
+    },
+    "production": {
+      "presets": ["es2015", "react"]
     }
   }
 }

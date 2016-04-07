@@ -19,10 +19,9 @@
     "babel-node": "babel-node",
     "build-client": "NODE_ENV=client-prod webpack --config webpack.config.prod.js",
     "build-node": "NODE_ENV=server-prod babel -d ./server/prod ./server/**",
-    "build-server-react": "NODE_ENV=client-prod babel -d ./build/components ./src/components",
     "build": "npm run clean && npm run build-client && npm run build-node && npm run build-server-react",
-    "start": "node server/prod/main.js",
-    "clean": "rimraf -f build && rimraf -f server/prod && rimraf -f assets/img/prod && rimraf -f assets/js && rimraf -f assets/css"
+    "start": "NODE_ENV=production node server/prod/main.js",
+    "clean": "rimraf -f server/prod && rimraf -f assets/img/prod && rimraf -f assets/js && rimraf -f assets/css"
   },
   "devDependencies": {
     "babel-cli": "^6.6.0",
@@ -37,7 +36,6 @@
     "i": "^0.3.4",
     "node-sass": "^3.4.2",
     "nodemon": "^1.9.1",
-    "npm": "^3.8.0",
     "proxy-middleware": "^0.15.0",
     "react-transform-hmr": "^1.0.2",
     "rimraf": "^2.5.2",
@@ -50,6 +48,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "babel-register": "^6.7.2",
     "express": "^4.13.4",
     "jade": "^1.11.0",
     "react": "^0.14.7",
