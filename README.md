@@ -27,7 +27,7 @@ Google can tell you what an isomorphic app is and why it's good. I built this be
 4. Build for production: `npm run build`. This does a few things: cleans out various directories (from remnant production builds), produces a Webpack bundle in **/assets/js/**, produces a stylesheet in **/assets/css/**, compiles your Node.js files into **/server/prod/** so they can be run without babel-node and finally uses a Gulp task to add vendor prefixes to the produced stylesheet.
 
 ## Known bugs
-+ Sometimes, even after you stop execution with `cntrl + C`, Nodemon still hogs port 3000. If this is an issue, you can kill all node processes on your machine with `pkill node`;
++ Sometimes, even after you stop execution with `ctrl + C`, Nodemon still hogs port 3000. If this is an issue, you can kill all node processes on your machine with `pkill node`.
 
 ## License
 MIT
