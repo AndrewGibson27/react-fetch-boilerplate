@@ -1,15 +1,18 @@
 {
-  "name": "react-router-express-isomorphic-boilerplate",
+  "name": "react-webpack-express-isomorphic-boilerplate",
   "version": "0.1.0",
-  "description": "Boilerplate for building an isomorphic Node.js application powered by Webpack, React and React Router",
+  "description": "Build an application that renders on the client and server using React, Express, Node.js and Webpack",
   "author": "Andrew Gibson <atgibson27@gmail.com>",
-  "main": "",
+  "main": [
+    "src/index.js",
+    "server/dev/server.js"
+  ],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/AndrewGibson27/react-webpack-express-isomorphic-boilerplate"
   },
   "bugs": {
-    "url": ""
+    "url": "https://github.com/AndrewGibson27/react-webpack-express-isomorphic-boilerplate/issues"
   },
   "scripts": {
     "node-watch": "NODE_ENV=server-dev nodemon --exec npm run babel-node -- ./server/dev/main.js",
