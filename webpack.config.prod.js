@@ -10,8 +10,8 @@ module.exports = {
   entry: './src/index',
   
   output: {
-        path: path.join(__dirname, 'assets/js'),
-        filename: 'bundle.min.js?[hash]',
+        path: path.join(__dirname, 'assets'),
+        filename: './js/bundle.min.js?[hash]',
         publicPath: './'
   },
   
@@ -23,7 +23,7 @@ module.exports = {
                 warnings: false
             }
         }),
-        new ExtractTextPlugin("../css/bundle.min.css?[hash]")
+        new ExtractTextPlugin("css/bundle.min.css?[hash]")
   ],
   
   module: {
@@ -41,7 +41,7 @@ module.exports = {
         
         {
             test: webpack_isomorphic_tools_plugin.regular_expression('images'),
-            loader: 'file-loader?name=../img/prod/[name].[ext]?[hash]'
+            loader: 'file-loader?name=img/prod/[name].[ext]?[hash]'
         }
     ]
   }
