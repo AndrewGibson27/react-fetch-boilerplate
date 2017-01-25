@@ -14,7 +14,9 @@
   "bugs": {
     "url": "https://github.com/AndrewGibson27/react-webpack-express-isomorphic-boilerplate/issues"
   },
-  "scripts": {},
+  "scripts": {
+    "compile": "babel ./server/raw.js --out-file ./server/server.js"
+  },
   "devDependencies": {
     "autoprefixer": "^6.7.0",
     "babel-cli": "^6.22.2",
