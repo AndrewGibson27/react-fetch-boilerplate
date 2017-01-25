@@ -1,14 +1,5 @@
 /node_modules/
-/build/
-npm-debug.log
-webpack-assets.json
-webpack-stats.json
-/assets/js/
-/assets/css/
-/assets/img/prod
-/server/prod
-/server/prod/server.js
-/server/prod/main.js
+*.log
 .*
 !.gitignore
 !.babelrc
