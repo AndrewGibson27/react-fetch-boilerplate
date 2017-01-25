@@ -14,18 +14,7 @@
   "bugs": {
     "url": "https://github.com/AndrewGibson27/react-webpack-express-isomorphic-boilerplate/issues"
   },
-  "scripts": {
-    "node-watch": "NODE_ENV=server-dev nodemon --exec npm run babel-node -- ./server/dev/main.js",
-    "dev-watch": "npm run node-watch & NODE_ENV=client-dev webpack-dev-server --inline --hot",
-    "node-no-watch": "NODE_ENV=server-dev npm run babel-node -- ./server/dev/main.js",
-    "dev-no-watch": "npm run node-no-watch & NODE_ENV=client-dev webpack-dev-server --inline --hot",
-    "babel-node": "babel-node",
-    "build-client": "NODE_ENV=client-prod webpack --config webpack.config.prod.js",
-    "build-node": "NODE_ENV=server-prod babel -d ./server/prod ./server/**",
-    "build": "npm run clean && npm run build-client && npm run build-node && gulp autoprefixer",
-    "start": "NODE_ENV=production node server/prod/main.js",
-    "clean": "rimraf -f server/prod && rimraf -f assets/img/prod && rimraf -f assets/js && rimraf -f assets/css"
-  },
+  "scripts": {},
   "devDependencies": {
     "autoprefixer": "^6.7.0",
     "babel-cli": "^6.22.2",
