@@ -1,3 +1,5 @@
+**This project is undergoing a serious facelift.**
+
 # React Webpack Express Isomorphic Boilerplate
 It's fun, it's hip, it renders on the client and server!
 
