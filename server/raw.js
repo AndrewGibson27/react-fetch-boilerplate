@@ -17,6 +17,7 @@ app.use(express.static('public'));
 app.use(require('webpack-hot-middleware')(compiler));
 app.set('view engine', 'pug');
 app.use(require('webpack-dev-middleware')(compiler, {
+	noInfo: true,
 	publicPath: webpackConfig.output.publicPath
 }));
 
