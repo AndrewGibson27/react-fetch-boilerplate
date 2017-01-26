@@ -10,16 +10,27 @@ import webpackConfig from '../webpack.config.dev.js';
 
 import App from '../src/components/app/App';
 
+const isDev = process.env.NODE_ENV === 'development';
 const compiler = webpack(webpackConfig);
 const app = express();
 
+if (isDev) {
+	app.use(require('webpack-hot-middleware')(compiler));
+	app.use(require('webpack-dev-middleware')(compiler, {
+		noInfo: true,
+		publicPath: webpackConfig.output.publicPath
+	}));
+}
+
 app.use(express.static('public'));
-app.use(require('webpack-hot-middleware')(compiler));
 app.set('view engine', 'pug');
-app.use(require('webpack-dev-middleware')(compiler, {
-	noInfo: true,
-	publicPath: webpackConfig.output.publicPath
-}));
+
+app.get('/', function (req, res) {
+  res.render('index', {
+    env: process.env.NODE_ENV || 'development',
+		content: 'hello world'
+  });
+});
 
 app.listen(3000, 'localhost', function(err) {
   if (err) {
