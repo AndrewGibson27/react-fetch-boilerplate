@@ -9,6 +9,7 @@ import webpack from 'webpack';
 import webpackConfig from '../webpack.config.dev.js';
 
 import App from '../src/components/app/App';
+import routes from '../src/routes';
 
 const isDev = process.env.NODE_ENV === 'development';
 const compiler = webpack(webpackConfig);
@@ -22,9 +23,8 @@ if (isDev) {
 	}));
 }
 
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'pug');
-
 app.get('/', function (req, res) {
   res.render('index', {
     env: process.env.NODE_ENV || 'development',
