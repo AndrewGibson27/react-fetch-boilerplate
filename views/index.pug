@@ -1,0 +1,12 @@
+doctype html
+html
+	head
+		title React-Webpack-Express Isomorphic Boilerplate
+
+		if env != 'development'
+			link(rel='stylesheet', type='text/css', href='build/app-build.css')
+
+	body
+		#root!=content
+
+	script(src='js/bundle.js')
