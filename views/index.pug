@@ -9,4 +9,7 @@ html
 	body
 		#root!=content
 
-	script(src='js/bundle.js')
+	if env == 'development'
+		script(src='./public/js/bundle.js')
+	else
+		script(src='js/bundle.js')
