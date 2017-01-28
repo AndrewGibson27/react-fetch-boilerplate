@@ -8,12 +8,16 @@ import pug from 'pug';
 import webpack from 'webpack';
 import webpackConfig from '../webpack.config.dev.js';
 
-import App from '../src/components/app/App';
 import routes from '../src/routes';
 
-const isDev = process.env.NODE_ENV === 'development';
+const env = process.env.NODE_ENV || 'development';
+const isDev = env === 'development';
+const port = process.env.PORT || 3000;
 const compiler = webpack(webpackConfig);
 const app = express();
+
+app.use(express.static(__dirname + '/public'));
+app.set('view engine', 'pug');
 
 if (isDev) {
 	app.use(require('webpack-hot-middleware')(compiler));
@@ -23,20 +27,27 @@ if (isDev) {
 	}));
 }
 
-app.use(express.static(__dirname + '/public'));
-app.set('view engine', 'pug');
-app.get('/', function (req, res) {
-  res.render('index', {
-    env: process.env.NODE_ENV || 'development',
-		content: 'hello world'
+app.get('*', function (req, res) {
+	match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+    if (renderProps) {
+			res.render('index', {
+		  	env,
+				content: renderToString(<RouterContext {...renderProps} />)
+		  });
+    } else {
+			res.render('index', {
+		  	env,
+				content: 'Oops, something went wrong'
+		  });
+    }
   });
 });
 
-app.listen(3000, 'localhost', function(err) {
+app.listen(port, 'localhost', function(err) {
   if (err) {
     console.log(err);
     return false;
   }
 
-  console.log('Listening at http://localhost:3000');
+  console.log(`Listening at http://localhost:${port}`);
 });
