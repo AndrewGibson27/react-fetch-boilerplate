@@ -10,6 +10,6 @@ html
 		#root!=content
 
 	if env == 'development'
-		script(src='http://localhost:3000/public/js/bundle.js')
+		script(src='http://localhost:' + port + '/public/js/bundle.js')
 	else
 		script(src='js/bundle.js')
