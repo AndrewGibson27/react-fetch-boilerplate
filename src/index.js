@@ -1,5 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './components/app/App';
+import { Router, browserHistory, match } from 'react-router';
 
-render(<App />, document.getElementById('root'));
+import App from './components/app/App';
+import routes from './routes';
+
+match({ history: browserHistory, routes }, (error, redirectLocation, renderProps) => {
+  render(
+		<Router {...renderProps} />,
+		document.getElementById('root')
+	);
+})
