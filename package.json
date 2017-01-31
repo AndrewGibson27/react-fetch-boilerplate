@@ -15,7 +15,7 @@
     "url": "https://github.com/AndrewGibson27/react-webpack-express-isomorphic-boilerplate/issues"
   },
   "scripts": {
-		"routes": "webpack --config webpack.config.server.js",
+    "routes": "webpack --config webpack.config.server.js",
     "compile": "babel ./server/raw.js --out-file ./server/server.js",
     "dev": "npm run routes && npm run compile && npm start",
     "start": "NODE_ENV=development node ./server/server.js"
@@ -24,7 +24,6 @@
     "autoprefixer": "^6.7.0",
     "babel-cli": "^6.22.2",
     "babel-loader": "^6.2.10",
-    "babel-plugin-webpack-loaders": "^0.8.0",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
     "css-loader": "^0.26.1",
