@@ -6,9 +6,9 @@ import express from 'express';
 import path from 'path';
 import pug from 'pug';
 import webpack from 'webpack';
-import webpackConfig from '../webpack.config.dev.js';
 
-import routes from '../src/routes';
+import webpackConfig from '../webpack.config.dev.js';
+import routes from './routes';
 
 const env = process.env.NODE_ENV || 'development';
 const isDev = env === 'development';
@@ -32,11 +32,13 @@ app.get('*', function (req, res) {
     if (renderProps) {
 			res.render('index', {
 		  	env,
+				port,
 				content: renderToString(<RouterContext {...renderProps} />)
 		  });
     } else {
 			res.render('index', {
 		  	env,
+				port,
 				content: 'Oops, something went wrong'
 		  });
     }
