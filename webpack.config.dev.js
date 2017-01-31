@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	entry: [
@@ -14,6 +15,7 @@ module.exports = {
   },
 
 	plugins: [
+		new ExtractTextPlugin('../css/bundle.css?[hash]'),
 		new webpack.optimize.OccurenceOrderPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoErrorsPlugin(),
@@ -31,8 +33,9 @@ module.exports = {
 			},
 
 			{
-				test: /\.s?ss$/,
-				loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!sass-loader'
+				test: /\.scss$/,
+				include: path.join(__dirname, 'src'),
+				loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!sass-loader')
 			},
 
 			{
