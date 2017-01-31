@@ -7,7 +7,7 @@ import routes from './routes';
 
 match({ history: browserHistory, routes }, (error, redirectLocation, renderProps) => {
   render(
-		<Router {...renderProps} />,
+		<Router history={browserHistory} routes={routes} />,
 		document.getElementById('root')
 	);
-})
+});
