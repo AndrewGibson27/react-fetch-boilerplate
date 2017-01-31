@@ -2,9 +2,7 @@ doctype html
 html
 	head
 		title React-Webpack-Express Isomorphic Boilerplate
-
-		if env != 'development'
-			link(rel='stylesheet', type='text/css', href='build/app-build.css')
+		link(rel='stylesheet', type='text/css', href='http://localhost:' + port + '/public/css/bundle.css')
 
 	body
 		#root!=content
