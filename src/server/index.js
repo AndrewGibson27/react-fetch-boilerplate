@@ -1,4 +1,3 @@
-import 'babel-register';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
