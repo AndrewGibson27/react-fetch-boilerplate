@@ -17,6 +17,8 @@ export default class Inner extends Component {
 					<li><Link to="/inner/309">309</Link></li>
 				</ul>
 
+				<img src={require('../../img/test.jpg')} />
+
         {this.props.children}
       </div>
 		);
