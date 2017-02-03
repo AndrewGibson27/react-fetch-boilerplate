@@ -37,8 +37,8 @@ module.exports = {
 			},
 
 			{
-				test: /\.scss?$/,
-				loader: 'css!sass'
+				test: /\.(scss|sass|css)?$/,
+				loader: 'null-loader'
 			},
 
 			{
