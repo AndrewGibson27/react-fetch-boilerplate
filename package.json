@@ -17,11 +17,11 @@
   "scripts": {
     "routes": "webpack --config webpack.config.server.js",
     "compile": "babel ./src/server/index.js --out-file ./server/server.js",
+    "clean": "rimraf -f ./public/*build*",
     "dev": "npm run clean && npm run routes && npm run compile && npm run hot",
     "hot": "NODE_ENV=development node ./server/server.js",
-    "clean": "rimraf -f ./public/*build*",
-    "prod": "webpack --config webpack.config.prod.js",
-    "build": "npm run clean && npm run prod",
+    "webpack": "webpack --config webpack.config.prod.js",
+    "build": "npm run clean && npm run routes && npm run compile && npm run webpack",
     "start": "NODE_ENV=production node ./server/server.js"
   },
   "devDependencies": {
@@ -36,7 +36,6 @@
     "file-loader": "^0.9.0",
     "isomorphic-loader": "^1.6.1",
     "node-sass": "^4.4.0",
-    "null-loader": "^0.1.1",
     "react-hot-loader": "^1.3.1",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
