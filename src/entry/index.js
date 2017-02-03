@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV === 'development') {
+  module.hot.accept();
+}
+
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, browserHistory, match } from 'react-router';
