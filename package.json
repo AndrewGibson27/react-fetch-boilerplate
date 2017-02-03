@@ -16,7 +16,7 @@
   },
   "scripts": {
     "routes": "webpack --config webpack.config.server.js",
-    "compile": "babel ./server/raw.js --out-file ./server/server.js",
+    "compile": "babel ./src/server/index.js --out-file ./server/server.js",
     "dev": "npm run routes && npm run compile && npm start",
     "start": "NODE_ENV=development node ./server/server.js"
   },

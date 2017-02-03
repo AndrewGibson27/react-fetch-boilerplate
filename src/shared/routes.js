@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import App from './components/app/App';
-import Inner from './components/inner/Inner';
-import InnerSpecific from './components/innerspecific/InnerSpecific';
+import App from '../components/app/App';
+import Inner from '../components/inner/Inner';
+import InnerSpecific from '../components/innerspecific/InnerSpecific';
 
 const routes = (
 	<Route path="/" component={App}>

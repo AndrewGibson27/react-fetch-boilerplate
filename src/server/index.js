@@ -1,6 +1,6 @@
 import 'babel-register';
 import React from 'react';
-import { renderToString } from 'react-dom/server';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import express from 'express';
 import path from 'path';
@@ -16,7 +16,7 @@ const port = process.env.PORT || 3000;
 const compiler = webpack(webpackConfig);
 const app = express();
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 app.set('view engine', 'pug');
 
 if (isDev) {
@@ -31,14 +31,10 @@ app.get('*', function (req, res) {
 	match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (renderProps) {
 			res.render('index', {
-		  	env,
-				port,
-				content: renderToString(<RouterContext {...renderProps} />)
+				content: renderToStaticMarkup(<RouterContext {...renderProps} />)
 		  });
     } else {
 			res.render('index', {
-		  	env,
-				port,
 				content: 'Oops, something went wrong'
 		  });
     }
