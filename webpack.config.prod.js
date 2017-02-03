@@ -31,7 +31,7 @@ module.exports = {
 			{
 				test: /\.(scss|sass)$/,
 				include: path.join(__dirname, 'src'),
-				loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!sass-loader')
+				loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!postcss-loader!sass-loader')
 			},
 
 			{
@@ -39,5 +39,11 @@ module.exports = {
 				loader: 'file-loader?name=[name]-build.[ext]'
 			}
 		]
-	}
+	},
+
+	postcss: function() {
+    return [
+      require('autoprefixer')
+    ];
+  }
 };
