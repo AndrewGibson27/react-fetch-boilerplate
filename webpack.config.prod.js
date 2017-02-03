@@ -1,48 +1,59 @@
 var path = require('path');
 var webpack = require('webpack');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-
-var Webpack_isomorphic_tools_plugin = require('webpack-isomorphic-tools/plugin')
-var webpack_isomorphic_tools_plugin = 
-    new Webpack_isomorphic_tools_plugin(require('./webpack-isomorphic-tools-config'));
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
-  entry: './src/index',
-  
-  output: {
-        path: path.join(__dirname, 'assets'),
-        filename: './js/bundle.min.js?[hash]',
-        publicPath: './'
+	entry: './src/entry/index',
+
+	output: {
+		path: path.join(__dirname, 'public'),
+		filename: 'bundle-build.js?[hash]',
+		publicPath: '/'
   },
-  
-  plugins: [
-        webpack_isomorphic_tools_plugin,
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            compressor: {
-                warnings: false
-            }
-        }),
-        new ExtractTextPlugin("css/bundle.min.css?[hash]")
-  ],
-  
+
+	plugins: [
+		new ExtractTextPlugin('bundle-build.css?[hash]'),
+		new webpack.optimize.OccurenceOrderPlugin(),
+		new webpack.NoErrorsPlugin(),
+		new webpack.DefinePlugin({
+			'process.env.NODE_ENV': JSON.stringify('production')
+		}),
+		new webpack.optimize.UglifyJsPlugin({
+			compressor: { warnings: false },
+			output: { comments: require('uglify-save-license') }
+    }),
+		new OptimizeCssAssetsPlugin({
+			assetNameRegExp: /\.optimize\.css$/g,
+			cssProcessor: require('cssnano'),
+			canPrint: true
+    })
+	],
+
   module: {
-    loaders: [
-        {
-            test: /\.js$/,
-            loaders: ['babel'],
-            include: path.join(__dirname, 'src')
-        },
-        
-        {
-            test: webpack_isomorphic_tools_plugin.regular_expression('style_modules'),
-            loader: ExtractTextPlugin.extract('css-loader?modules&importLoaders=1&localIdentName=[name]---[local]---[hash:base64:5]!sass-loader')
-        },
-        
-        {
-            test: webpack_isomorphic_tools_plugin.regular_expression('images'),
-            loader: 'file-loader?name=img/prod/[name].[ext]?[hash]'
-        }
-    ]
+		loaders: [
+			{
+				test: /\.js$/,
+				loaders: ['babel'],
+				exclude: /node_modules/
+			},
+
+			{
+				test: /\.(scss|sass)$/,
+				include: path.join(__dirname, 'src'),
+				loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!postcss-loader!sass-loader')
+			},
+
+			{
+				test: /\.(png|jpg|gif)$/,
+				loader: 'file-loader?name=[name]-build.[ext]'
+			}
+		]
+	},
+
+	postcss: function() {
+    return [
+      require('autoprefixer')
+    ];
   }
 };
