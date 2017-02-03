@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
 	entry: './src/entry/index',
@@ -17,7 +18,16 @@ module.exports = {
 		new webpack.NoErrorsPlugin(),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify('production')
-		})
+		}),
+		new webpack.optimize.UglifyJsPlugin({
+			compressor: { warnings: false },
+			output: { comments: require('uglify-save-license') }
+    }),
+		new OptimizeCssAssetsPlugin({
+			assetNameRegExp: /\.optimize\.css$/g,
+			cssProcessor: require('cssnano'),
+			canPrint: true
+    })
 	],
 
   module: {
