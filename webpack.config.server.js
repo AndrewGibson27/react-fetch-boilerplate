@@ -3,6 +3,7 @@
 var webpack = require('webpack');
 var fs = require('fs');
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: './src/shared/routes',
@@ -14,6 +15,10 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx', '.css', '.local']
   },
+
+  plugins: [
+    new ExtractTextPlugin('../public/bundle-build.css'),
+  ],
 
   output: {
     path: path.join(__dirname, 'server'),
@@ -37,8 +42,8 @@ module.exports = {
 			},
 
 			{
-				test: /\.(scss|sass|css)?$/,
-				loader: 'null-loader'
+				test: /\.(scss|sass)?$/,
+				loader: ExtractTextPlugin.extract('css-loader?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!sass-loader')
 			},
 
 			{
