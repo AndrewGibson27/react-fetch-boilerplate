@@ -3,10 +3,9 @@
 var webpack = require('webpack');
 var fs = require('fs');
 var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './src/routes.js',
+  entry: './src/shared/routes',
 
   target: 'node',
 
@@ -17,14 +16,11 @@ module.exports = {
   },
 
   output: {
-    path: './server',
+    path: path.join(__dirname, 'server'),
     filename: 'routes.js',
+    publicPath: '/',
 		libraryTarget: 'commonjs2'
   },
-
-	plugins: [
-		new ExtractTextPlugin('../public/css/bundle.css?[hash]')
-	],
 
   node: {
     __filename: true,
@@ -42,7 +38,12 @@ module.exports = {
 
 			{
 				test: /\.scss?$/,
-				loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!sass-loader')
+				loader: 'css!sass'
+			},
+
+			{
+				test: /\.(png|jpg|gif)$/,
+				loader: 'file-loader?name=[name].[ext]'
 			}
     ]
   }

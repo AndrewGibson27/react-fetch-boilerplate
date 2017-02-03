@@ -5,17 +5,17 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
 	entry: [
 		'webpack-hot-middleware/client',
-		'./src/index'
+		'./src/entry/index'
 	],
 
 	output: {
-		path: path.join(__dirname, 'public', 'js'),
+		path: path.join(__dirname, 'public'),
 		filename: 'bundle.js',
-		publicPath: '/public/js/'
+		publicPath: '/'
   },
 
 	plugins: [
-		new ExtractTextPlugin('../css/bundle.css?[hash]'),
+		new ExtractTextPlugin('bundle.css?[hash]'),
 		new webpack.optimize.OccurenceOrderPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoErrorsPlugin(),
@@ -40,7 +40,7 @@ module.exports = {
 
 			{
 				test: /\.(png|jpg|gif)$/,
-				loader: 'file-loader'
+				loader: 'file-loader?name=[name].[ext]'
 			}
 		]
 	}
