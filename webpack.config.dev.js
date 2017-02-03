@@ -15,7 +15,7 @@ module.exports = {
   },
 
 	plugins: [
-		new ExtractTextPlugin('bundle.css?[hash]'),
+		new ExtractTextPlugin('bundle.css'),
 		new webpack.optimize.OccurenceOrderPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoErrorsPlugin(),
@@ -33,7 +33,7 @@ module.exports = {
 			},
 
 			{
-				test: /\.scss$/,
+				test: /\.(scss|sass)$/,
 				include: path.join(__dirname, 'src'),
 				loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!sass-loader')
 			},
