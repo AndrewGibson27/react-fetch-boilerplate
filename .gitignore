@@ -2,7 +2,7 @@
 *.log
 .*
 !.gitignore
+!.gitkeep
 !.babelrc
 /server/
-public/
-!public/lib/
+public/*build*
