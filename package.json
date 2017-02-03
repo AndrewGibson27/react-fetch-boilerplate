@@ -18,7 +18,7 @@
   "scripts": {
     "routes": "webpack --config webpack.config.server.js",
     "compile": "babel ./src/server/index.js --out-file ./server/server.js",
-    "clean": "rimraf -f ./public/*build*",
+    "clean": "rimraf -f ./public/*build* && rimraf -f ./server/*",
     "dev": "npm run clean && npm run routes && npm run compile && npm run hot",
     "hot": "NODE_ENV=development node ./server/server.js",
     "webpack": "webpack --config webpack.config.prod.js",
