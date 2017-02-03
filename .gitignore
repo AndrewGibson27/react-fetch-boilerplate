@@ -3,5 +3,6 @@
 .*
 !.gitignore
 !.babelrc
-server/server.js
-server/routes.js
+server/
+public/
+!public/lib/
