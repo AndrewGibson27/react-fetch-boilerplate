@@ -3,6 +3,6 @@
 .*
 !.gitignore
 !.babelrc
-server/
+/server/
 public/
 !public/lib/
