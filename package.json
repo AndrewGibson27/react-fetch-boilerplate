@@ -1,11 +1,12 @@
 {
   "name": "react-webpack-express-isomorphic-boilerplate",
-  "version": "0.1.0",
-  "description": "Build an application that renders on the client and server using React, Express, Node.js and Webpack",
+  "version": "1.0.0",
+  "description": "Render on the server and client with Webpack, React, React Router and Express",
   "author": "Andrew Gibson <atgibson27@gmail.com>",
   "main": [
-    "src/index.js",
-    "server/dev/server.js"
+    "src/entry/index.js",
+    "src/shared/routes.js",
+    "src/server/index.js"
   ],
   "repository": {
     "type": "git",
@@ -49,7 +50,6 @@
     "webpack-dev-middleware": "^1.9.0",
     "webpack-hot-middleware": "^2.15.0"
   },
-  "license": "MIT",
   "dependencies": {
     "babel-register": "^6.22.0",
     "express": "^4.14.0",
@@ -57,5 +57,6 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-router": "^3.0.2"
-  }
+  },
+  "license": "MIT"
 }
