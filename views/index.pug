@@ -2,12 +2,8 @@ doctype html
 html
 	head
 		title React-Webpack-Express Isomorphic Boilerplate
-		link(rel='stylesheet', type='text/css', href='http://localhost:' + port + '/public/css/bundle.css')
 
 	body
 		#root!=content
 
-	if env == 'development'
-		script(src='http://localhost:' + port + '/public/js/bundle.js')
-	else
-		script(src='js/bundle.js')
+	script(src='bundle.js')
