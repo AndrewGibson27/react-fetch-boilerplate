@@ -3,24 +3,20 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-	entry: [
-		'webpack-hot-middleware/client',
-		'./src/entry/index'
-	],
+	entry: './src/entry/index',
 
 	output: {
 		path: path.join(__dirname, 'public'),
-		filename: 'bundle-build.js',
+		filename: 'bundle-build.js?[hash]',
 		publicPath: '/'
   },
 
 	plugins: [
-		new ExtractTextPlugin('bundle-build.css'),
+		new ExtractTextPlugin('bundle-build.css?[hash]'),
 		new webpack.optimize.OccurenceOrderPlugin(),
-		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoErrorsPlugin(),
 		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': JSON.stringify('development')
+			'process.env.NODE_ENV': JSON.stringify('production')
 		})
 	],
 
