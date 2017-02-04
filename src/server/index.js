@@ -6,7 +6,8 @@ import path from 'path';
 import pug from 'pug';
 import webpack from 'webpack';
 
-import webpackConfig from '../webpack.config.dev.js';
+import constants from '../src/shared/constants';
+import webpackConfig from '../webpack/config.dev.js';
 import routes from './routes';
 
 const env = process.env.NODE_ENV || 'development';
@@ -15,7 +16,7 @@ const port = process.env.PORT || 3000;
 const compiler = webpack(webpackConfig);
 const app = express();
 
-app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(express.static(constants.appRoot + '/public/'));
 app.set('view engine', 'pug');
 
 if (isDev) {
