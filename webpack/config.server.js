@@ -3,10 +3,11 @@
 var webpack = require('webpack');
 var fs = require('fs');
 var path = require('path');
+var appRoot = require('../src/shared/constants').appRoot;
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './src/shared/routes',
+  entry: appRoot + '/src/shared/routes',
 
   target: 'node',
 
@@ -21,7 +22,7 @@ module.exports = {
   ],
 
   output: {
-    path: path.join(__dirname, 'server'),
+    path: appRoot + '/server/',
     filename: 'routes.js',
     publicPath: '/',
 		libraryTarget: 'commonjs2'
@@ -43,6 +44,7 @@ module.exports = {
 
 			{
 				test: /\.(scss|sass)?$/,
+        include: appRoot + '/src/',
 				loader: ExtractTextPlugin.extract('css-loader?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!sass-loader')
 			},
 

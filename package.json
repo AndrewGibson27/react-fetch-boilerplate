@@ -16,12 +16,12 @@
     "url": "https://github.com/AndrewGibson27/react-webpack-express-isomorphic-boilerplate/issues"
   },
   "scripts": {
-    "routes": "webpack --config webpack.config.server.js",
+    "routes": "webpack --config ./webpack/config.server.js",
     "compile": "babel ./src/server/index.js --out-file ./server/server.js",
     "clean": "rimraf -f ./public/*build* && rimraf -f ./server/*",
     "dev": "npm run clean && npm run routes && npm run compile && npm run hot",
     "hot": "NODE_ENV=development node ./server/server.js",
-    "webpack": "webpack --config webpack.config.prod.js",
+    "webpack": "webpack --config ./webpack/config.prod.js",
     "build": "npm run clean && npm run routes && npm run compile && npm run webpack",
     "start": "NODE_ENV=production node ./server/server.js"
   },
