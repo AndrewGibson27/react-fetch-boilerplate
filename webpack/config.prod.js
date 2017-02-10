@@ -1,16 +1,18 @@
 var path = require('path');
 var webpack = require('webpack');
-var appRoot = require('../src/shared/constants').appRoot;
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+var config = require('../config');
 
 module.exports = {
-	entry: appRoot + '/src/entry/index',
+	context: config.webpackContextPath,
+
+	entry: './src/entry/index',
 
 	output: {
-		path: appRoot + '/public/',
+		path: config.webpackClientBuildDirPath,
 		filename: 'bundle-build.js?[hash]',
-		publicPath: '/'
+		publicPath: config.webpackPublicPath
   },
 
 	plugins: [
@@ -41,14 +43,19 @@ module.exports = {
 
 			{
 				test: /\.(scss|sass)$/,
-				include: appRoot + '/src/',
+				include: '/src/',
 				loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!postcss-loader!sass-loader')
 			},
 
 			{
 				test: /\.(png|jpg|gif)$/,
 				loader: 'file-loader?name=[name]-build.[ext]'
-			}
+			},
+
+			{
+        test: /\.json$/,
+        loader: 'json-loader'
+      }
 		]
 	},
 
