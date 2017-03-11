@@ -2,17 +2,16 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-var config = require('../config');
 
 module.exports = {
-	context: config.webpackContextPath,
+	context: path.join(__dirname, '..'),
 
-	entry: './src/entry/index',
+	entry: './client/entry/index',
 
 	output: {
-		path: config.webpackClientBuildDirPath,
+		path: path.join(__dirname, '..', 'public'),
 		filename: 'bundle-build.js?[hash]',
-		publicPath: config.webpackPublicPath
+		publicPath: '/'
   },
 
 	plugins: [
@@ -43,7 +42,7 @@ module.exports = {
 
 			{
 				test: /\.(scss|sass)$/,
-				include: '/src/',
+				include: path.join(__dirname, '..', 'shared'),
 				loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!postcss-loader!sass-loader')
 			},
 

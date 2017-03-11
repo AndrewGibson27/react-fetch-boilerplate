@@ -17,10 +17,10 @@
   },
   "scripts": {
     "routes": "webpack --config ./webpack/config.server.js",
-    "compile": "babel ./src/server/index.js --out-file ./server/server.js",
-    "clean": "rimraf -f ./public/*build* && rimraf -f ./server/*",
+    "compile": "babel ./server/src --out-dir ./server/dist",
+    "clean": "rimraf -f ./public/*build* && rimraf -f ./server/*build*",
     "dev": "npm run clean && npm run routes && npm run compile && npm run hot",
-    "hot": "NODE_ENV=development node ./server/server.js",
+    "hot": "NODE_ENV=development node ./server/dist/server.js",
     "webpack": "webpack --config ./webpack/config.prod.js",
     "build": "npm run clean && npm run routes && npm run compile && npm run webpack",
     "start": "NODE_ENV=production node ./server/server.js"
@@ -29,12 +29,14 @@
     "autoprefixer": "^6.7.2",
     "babel-cli": "^6.22.2",
     "babel-loader": "^6.2.10",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
     "css-loader": "^0.26.1",
     "cssnano": "^3.10.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
+    "json-loader": "^0.5.4",
     "node-sass": "^4.4.0",
     "optimize-css-assets-webpack-plugin": "^1.3.0",
     "postcss-loader": "^1.2.2",
@@ -51,7 +53,8 @@
     "pug": "^2.0.0-beta8",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-router": "^3.0.2"
+    "react-router": "^3.0.2",
+    "request": "^2.81.0"
   },
   "license": "MIT"
 }

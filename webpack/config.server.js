@@ -2,12 +2,11 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var config = require('../config');
 
 module.exports = {
-  context: config.webpackContextPath,
+  context: path.join(__dirname, '..'),
 
-  entry: './src/shared/routes',
+  entry: './shared/routes',
 
   target: 'node',
 
@@ -18,13 +17,13 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin('bundle-build.css'),
+    new ExtractTextPlugin('bundle.css'),
   ],
 
   output: {
-    path: path.join(__dirname, '..', 'server'),
+    path: path.join(__dirname, '..', 'server', 'dist'),
     filename: 'routes.js',
-    publicPath: config.webpackPublicPath,
+    publicPath: '/',
 		libraryTarget: 'commonjs2'
   },
 
@@ -43,14 +42,14 @@ module.exports = {
 			},
 
 			{
-				test: /\.(scss|sass)?$/,
-        include: '/src/',
+				test: /\.(scss|sass)$/,
+        include: path.join(__dirname, '..', 'shared'),
 				loader: ExtractTextPlugin.extract('css-loader?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!sass-loader')
 			},
 
 			{
 				test: /\.(png|jpg|gif)$/,
-				loader: 'file-loader?name=[name]-build.[ext]'
+				loader: 'file-loader?name=[name].[ext]'
 			},
 
       {

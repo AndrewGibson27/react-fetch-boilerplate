@@ -1,8 +1,8 @@
-/node_modules/
+node_modules/
 *.log
 .*
 !.gitignore
 !.gitkeep
 !.babelrc
-/server/
+server/dist/
 public/*build*

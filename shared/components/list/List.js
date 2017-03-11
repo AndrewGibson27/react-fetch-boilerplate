@@ -1,0 +1,63 @@
+import React, { Component } from 'react';
+import { Link } from 'react-router';
+
+import ListItem from '../listitem/ListItem';
+import styles from './list.scss';
+
+export default class List extends Component {
+	constructor(props) {
+    super(props);
+		this.state = this.props.initial || window.INITIAL || { listItems: [] };
+  }
+
+	componentDidMount() {
+		fetch('/api/list').then(response => {
+			return response.json();
+    }).then(data => {
+			this.setState({
+				listItems: data.listItems
+			});
+    }).catch(err => {
+			throw new Error(err);
+    });
+	}
+
+	render() {
+		const itemsMarkup = this.state.listItems.map((item, i) => {
+			return (
+				<Item
+					id={item.id}
+					title={item.title}
+					key={i}
+				/>
+			);
+		});
+
+		const self = this;
+		const children = React.Children.map(this.props.children, function(child) {
+	    return React.cloneElement(child, {
+	      listItems: self.state.listItems
+	    })
+	  });
+
+		return (
+			<div>
+        <h2>List of items</h2>
+				<ul>{itemsMarkup}</ul>
+        {children}
+      </div>
+		);
+	}
+}
+
+class Item extends Component {
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+		return (
+			<li><Link to={`/list/item/${this.props.id}`}>{this.props.title}</Link></li>
+		);
+	}
+}

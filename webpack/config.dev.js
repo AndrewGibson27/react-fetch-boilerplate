@@ -1,24 +1,21 @@
 var path = require('path');
 var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var config = require('../config');
 
 module.exports = {
-	context: config.webpackContextPath,
+	context: path.join(__dirname, '..'),
 
 	entry: [
 		'webpack-hot-middleware/client',
-		'./src/entry/index'
+		'./client/entry/index'
 	],
 
 	output: {
-		path: config.webpackClientBuildDirPath,
+		path: path.join(__dirname, '..', 'public'),
 		filename: 'bundle-build.js',
-		publicPath: config.webpackPublicPath
+		publicPath: '/'
   },
 
 	plugins: [
-		new ExtractTextPlugin('bundle-build.css'),
 		new webpack.optimize.OccurenceOrderPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoErrorsPlugin(),
@@ -37,7 +34,7 @@ module.exports = {
 
 			{
 				test: /\.(scss|sass)$/,
-				include: '/src/',
+				include: path.join(__dirname, '..', 'shared'),
 				loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!sass-loader'
 			},
 
