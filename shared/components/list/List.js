@@ -34,7 +34,6 @@ export default class List extends Component {
 		});
 
 		const self = this;
-
 		const children = React.Children.map(this.props.children, function(child) {
 	    return React.cloneElement(child, {
 	      info: self.state.listItems[parseInt(child.props.routeParams.id)-1]
