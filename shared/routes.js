@@ -5,7 +5,7 @@ import App from './components/app/App';
 import List from './components/list/List';
 import ListItem from './components/listitem/ListItem';
 
-const routes = (
+export default (
 	<Route path='/' component={App}>
 		<IndexRoute component={List} />
 		<Route path='list' component={List}>
@@ -13,5 +13,3 @@ const routes = (
 		</Route>
 	</Route>
 );
-
-export default routes;
