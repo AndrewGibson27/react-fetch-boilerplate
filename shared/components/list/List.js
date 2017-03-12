@@ -34,10 +34,11 @@ export default class List extends Component {
 		});
 
 		const self = this;
+
 		const children = React.Children.map(this.props.children, function(child) {
 	    return React.cloneElement(child, {
-	      listItems: self.state.listItems
-	    })
+	      info: self.state.listItems[parseInt(child.props.routeParams.id)-1]
+	    });
 	  });
 
 		return (
@@ -50,14 +51,10 @@ export default class List extends Component {
 	}
 }
 
-class Item extends Component {
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
-		return (
-			<li><Link to={`/list/item/${this.props.id}`}>{this.props.title}</Link></li>
-		);
-	}
+function Item(props) {
+	return (
+		<li>
+			<Link to={`/list/item/${props.id}`}>{props.title}</Link>
+		</li>
+	);
 }
