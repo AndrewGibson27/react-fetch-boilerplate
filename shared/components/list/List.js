@@ -41,9 +41,9 @@ export default class List extends Component {
 	  });
 
 		return (
-			<div>
-        <h2>List of items</h2>
-				<ul>{itemsMarkup}</ul>
+			<div className={styles.list}>
+        <h2 className={styles.listHeader}>List of items</h2>
+				<ul className={styles.listItems}>{itemsMarkup}</ul>
         {children}
       </div>
 		);
