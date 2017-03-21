@@ -23,7 +23,7 @@
     "hot": "NODE_ENV=development node ./server/dist/server.js",
     "webpack": "webpack --config ./webpack/config.prod.js",
     "build": "npm run clean && npm run routes && npm run compile && npm run webpack",
-    "start": "NODE_ENV=production node ./server/server.js"
+    "start": "NODE_ENV=production node ./server/dist/server.js"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
