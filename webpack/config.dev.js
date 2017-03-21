@@ -1,22 +1,21 @@
 var path = require('path');
 var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var appRoot = require('../src/shared/constants').appRoot;
 
 module.exports = {
+	context: path.join(__dirname, '..'),
+
 	entry: [
 		'webpack-hot-middleware/client',
-		appRoot + '/src/entry/index'
+		'./client/entry/index'
 	],
 
 	output: {
-		path: appRoot + '/public/',
+		path: path.join(__dirname, '..', 'public'),
 		filename: 'bundle-build.js',
 		publicPath: '/'
   },
 
 	plugins: [
-		new ExtractTextPlugin('bundle-build.css'),
 		new webpack.optimize.OccurenceOrderPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoErrorsPlugin(),
@@ -35,14 +34,19 @@ module.exports = {
 
 			{
 				test: /\.(scss|sass)$/,
-				include: appRoot + '/src/',
+				include: path.join(__dirname, '..', 'shared'),
 				loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!sass-loader'
 			},
 
 			{
 				test: /\.(png|jpg|gif)$/,
 				loader: 'file-loader?name=[name]-build.[ext]'
-			}
+			},
+
+			{
+        test: /\.json$/,
+        loader: 'json-loader'
+      }
 		]
 	}
 };

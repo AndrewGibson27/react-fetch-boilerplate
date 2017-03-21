@@ -1,13 +1,12 @@
 // https://github.com/jarsbe/book-shelf/blob/isomorphic/webpack/server.config.js
-
-var webpack = require('webpack');
-var fs = require('fs');
 var path = require('path');
-var appRoot = require('../src/shared/constants').appRoot;
+var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: appRoot + '/src/shared/routes',
+  context: path.join(__dirname, '..'),
+
+  entry: './shared/routes',
 
   target: 'node',
 
@@ -18,11 +17,11 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin('../public/bundle-build.css'),
+    new ExtractTextPlugin('bundle.css'),
   ],
 
   output: {
-    path: appRoot + '/server/',
+    path: path.join(__dirname, '..', 'server', 'dist'),
     filename: 'routes.js',
     publicPath: '/',
 		libraryTarget: 'commonjs2'
@@ -43,15 +42,20 @@ module.exports = {
 			},
 
 			{
-				test: /\.(scss|sass)?$/,
-        include: appRoot + '/src/',
+				test: /\.(scss|sass)$/,
+        include: path.join(__dirname, '..', 'shared'),
 				loader: ExtractTextPlugin.extract('css-loader?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!sass-loader')
 			},
 
 			{
 				test: /\.(png|jpg|gif)$/,
 				loader: 'file-loader?name=[name]-build.[ext]'
-			}
+			},
+
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      }
     ]
   }
 };
