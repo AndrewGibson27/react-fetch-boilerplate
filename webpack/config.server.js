@@ -49,7 +49,7 @@ module.exports = {
 
 			{
 				test: /\.(png|jpg|gif)$/,
-				loader: 'file-loader?name=[name].[ext]'
+				loader: 'file-loader?name=[name]-build.[ext]'
 			},
 
       {
