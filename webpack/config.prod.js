@@ -60,7 +60,11 @@ module.exports = {
 
 	postcss: function() {
     return [
-      require('autoprefixer')
+      require('autoprefixer')({
+				browsers: [
+					'last 3 versions'
+				]
+			})
     ];
   }
 };
