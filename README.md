@@ -30,6 +30,11 @@ Google can tell you what isomorphic apps are and why they're good. I built this 
 + `npm run build`: The full production build.
 + `npm start`: Run the production Node.js server.
 
+## Inspiration
++ [react-universal-web-apps](https://github.com/zen-js-code/react-universal-web-apps)
++ [book-shelf](https://github.com/jarsbe/book-shelf)
++ [webpack-express-boilerplate](https://github.com/christianalfoni/webpack-express-boilerplate)
+
 ## What's next
 + Upgrade to [react-router](https://reacttraining.com/react-router/)@4.x
 + Use [react-hot-loader](https://github.com/gaearon/react-hot-loader)
@@ -38,3 +43,6 @@ Google can tell you what isomorphic apps are and why they're good. I built this 
 
 ## License
 MIT
+
+## Credits
+Wonderful walrus placeholder image courtesy of [Jay Ruzesky](https://unsplash.com/@wolsenburg) on [Unsplash It](https://unsplash.it/images).
