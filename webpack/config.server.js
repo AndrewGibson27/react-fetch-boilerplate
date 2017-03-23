@@ -24,7 +24,7 @@ module.exports = {
     path: path.join(__dirname, '..', 'server', 'dist'),
     filename: 'routes.js',
     publicPath: '/',
-		libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs2'
   },
 
   node: {
@@ -36,21 +36,21 @@ module.exports = {
   module: {
     loaders: [
       {
-				test: /\.js?$/,
-				exclude: /node_modules/,
-				loader: 'babel-loader'
-			},
+        test: /\.js?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
 
-			{
-				test: /\.(scss|sass)$/,
+      {
+        test: /\.(scss|sass)$/,
         include: path.join(__dirname, '..', 'shared'),
-				loader: ExtractTextPlugin.extract('css-loader?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!sass-loader')
-			},
+        loader: ExtractTextPlugin.extract('css-loader?modules&importLoaders=1&localIdentName=[name]-[local]-[hash:base64:5]!sass-loader')
+      },
 
-			{
-				test: /\.(png|jpg|gif)$/,
-				loader: 'file-loader?name=[name]-build.[ext]'
-			},
+      {
+        test: /\.(png|jpg|gif)$/,
+        loader: 'file-loader?name=[name]-build.[ext]'
+      },
 
       {
         test: /\.json$/,

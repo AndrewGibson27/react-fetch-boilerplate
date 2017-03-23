@@ -12,7 +12,7 @@ if (isDev) {
 
 match({ history: browserHistory, routes }, (error, redirectLocation, renderProps) => {
   render(
-		<Router history={browserHistory} routes={routes} />,
-		document.getElementById('root')
-	);
+    <Router history={browserHistory} routes={routes} />,
+    document.getElementById('root')
+  );
 });

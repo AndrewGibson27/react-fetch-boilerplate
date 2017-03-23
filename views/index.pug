@@ -1,13 +1,13 @@
 doctype html
 html
-	head
-		title React-Webpack-Express Isomorphic Boilerplate
-		link(rel='stylesheet', type='text/css', href='/bundle-build.css')
+  head
+    title React-Webpack-Express Isomorphic Boilerplate
+    link(rel='stylesheet', type='text/css', href='/bundle-build.css')
 
-	body
-		#root!= content
+  body
+    #root!= content
 
-	script.
-		window.INITIAL = !{JSON.stringify(initial)};
+  script.
+    window.INITIAL = !{JSON.stringify(initial)};
 
-	script(src='/bundle-build.js')
+  script(src='/bundle-build.js')
