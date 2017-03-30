@@ -30,6 +30,11 @@ Google can tell you what isomorphic apps are and why they're good. I built this 
 + `npm run build`: The full production build.
 + `npm start`: Run the production Node.js server.
 
+## Notes
++ In development, you'll notice the server-rendered markup is not styled. That's because the stylesheet is only built in production, and appending `<style>` tags requires JavaScript.
++ On `npm run routes`, you'll notice images, stylesheets and client scripts get built into `server/dist`. That's just a side effect of having to use Webpack to bundle the routes for server-side rendering. They're all `.gitignore`d.
++ In `shared/utils.js`, make sure to change the second value in the `location` ternary to your production domain.
+
 ## Inspiration
 + [react-universal-web-apps](https://github.com/zen-js-code/react-universal-web-apps)
 + [book-shelf](https://github.com/jarsbe/book-shelf)
@@ -37,7 +42,6 @@ Google can tell you what isomorphic apps are and why they're good. I built this 
 
 ## What's next
 + Upgrade to [react-router](https://reacttraining.com/react-router/)@4.x
-+ Use [react-hot-loader](https://github.com/gaearon/react-hot-loader)
 + Integrate [react-redux](https://github.com/reactjs/react-redux)
 + Add unit tests
 
