@@ -17,7 +17,7 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin('bundle.css'),
+    new ExtractTextPlugin('bundle-build.css'),
   ],
 
   output: {
