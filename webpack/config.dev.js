@@ -5,6 +5,7 @@ module.exports = {
   context: path.join(__dirname, '..'),
 
   entry: [
+    'react-hot-loader/patch',
     'webpack-hot-middleware/client',
     './client/entry/index'
   ],
