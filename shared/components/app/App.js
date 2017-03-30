@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 
 import styles from './app.scss';
-import Test from './Test';
 
 export default class App extends Component {
   constructor(props) {
