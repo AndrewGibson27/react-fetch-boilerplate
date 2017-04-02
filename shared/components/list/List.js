@@ -23,6 +23,8 @@ export default class List extends Component {
   }
 
   render() {
+    const self = this;
+
     const itemsMarkup = this.state.listItems.map((item, i) => {
       return (
         <Item
@@ -33,19 +35,17 @@ export default class List extends Component {
       );
     });
 
-    const self = this;
+    // http://stackoverflow.com/questions/32370994/how-to-pass-props-to-this-props-children
     const children = React.Children.map(this.props.children, function(child) {
       return React.cloneElement(child, {
-        info: self.state.listItems[parseInt(child.props.routeParams.id)-1]
+        info: self.state.listItems[ parseInt(child.props.routeParams.id) - 1 ]
       });
     });
 
     return (
       <div className={styles.list}>
         <h2 className={styles.listHeader}>List of items</h2>
-
         <ul className={styles.listItems}>{itemsMarkup}</ul>
-
         {children}
       </div>
     );

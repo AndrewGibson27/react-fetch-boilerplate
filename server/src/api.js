@@ -1,4 +1,5 @@
 // https://github.com/zen-js-code/react-universal-web-apps/blob/simple%2Bssr/app/infra/route-manager.js
+
 import fs from 'fs';
 import path from 'path';
 import express from 'express';
@@ -11,6 +12,7 @@ export default class APIHandler {
   buildRouter() {
     const router = express.Router();
 
+    // http://stackoverflow.com/questions/13442377/redirect-all-trailing-slashes-globally-in-express
     router.use((req, res, next) => {
       if (req.url.substr(-1) == '/' && req.url.length > 1) {
         res.redirect(301, req.url.slice(0, -1));
