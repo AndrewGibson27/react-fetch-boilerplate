@@ -43,6 +43,10 @@ export default class APIHandler {
       });
   }
 
+  /**
+    Make sure this data is safe,
+    or sanitize it first!
+  */
   retrieveListItems(callback) {
     const filePath = path.join(__dirname, '..', '..', 'shared', 'json', 'listItems.json');
     fs.readFile(filePath, 'utf-8', callback);
