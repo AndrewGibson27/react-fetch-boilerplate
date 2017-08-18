@@ -1,8 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import routes from '../../shared/routes';
-import { isDev } from '../../shared/utils';
+import { isDev } from '../shared/utils';
 
 /* match({ history: browserHistory, routes }, (error, redirectLocation, renderProps) => {
   render(

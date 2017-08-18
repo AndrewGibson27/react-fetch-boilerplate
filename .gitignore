@@ -5,4 +5,4 @@ node_modules/
 !.gitkeep
 !.babelrc
 server/dist/
-public/*build*
+public/assets/
