@@ -25,7 +25,7 @@ if (isDev) {
 }
 
 app.get('*', (req, res) => {
-
+  res.render('index', {});
 });
 
 app.listen(port, 'localhost', (err) => {
