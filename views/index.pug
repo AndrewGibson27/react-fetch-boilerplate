@@ -1,14 +1,13 @@
 doctype html
 html
   head
-    title React-Webpack-Express Isomorphic Boilerplate
-    link(rel='stylesheet', type='text/css', href='/bundle-build.css')
+    title React Fetch Boilerplate
 
   body
     #root!= content
 
   script.
     // make sure this JSON is properly sanitized!
-    window.INITIAL = !{JSON.stringify(initial)};
+    // window.INITIAL = !{JSON.stringify(initial)};
 
   script(src='/bundle-build.js')
