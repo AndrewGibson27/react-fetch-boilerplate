@@ -3,11 +3,11 @@ import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
 import { isDev } from '../shared/utils';
-import Nav from '../shared/components/Nav';
+import App from '../shared/components/App';
 
 render(
   <BrowserRouter>
-    <Nav />
+    <App />
   </BrowserRouter>,
   document.getElementById('root')
 );
