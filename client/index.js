@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-import { isDev } from '../shared/utils';
+import { isDev } from './config';
 import App from '../shared/components/App';
 
 render(
@@ -11,7 +11,6 @@ render(
   </BrowserRouter>,
   document.getElementById('root')
 );
-
 
 if (isDev) {
   module.hot.accept();
