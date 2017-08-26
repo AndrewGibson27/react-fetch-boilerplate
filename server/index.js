@@ -6,13 +6,16 @@ import path from 'path';
 import pug from 'pug';
 import webpack from 'webpack';
 
-import { port, isDev } from '../shared/utils';
+import { port, isDev } from './config';
 import webpackConfig from '../webpack/client.dev.js';
+import api from './api';
+import initDb from './db';
 
 const compiler = webpack(webpackConfig);
 const app = express();
 
 app.use(express.static('public'));
+app.use('/api', api);
 app.set('view engine', 'pug');
 app.set('port', port);
 
@@ -24,16 +27,18 @@ if (isDev) {
   }));
 }
 
-app.get('*', (req, res) => {
-  res.render('index', {});
-});
+initDb(() => {
+  app.get('*', (req, res) => {
+    res.render('index', {});
+  });
 
-app.listen(port, 'localhost', (err) => {
-  if (err) {
-    if (isDev) {
-      console.log(err);
+  app.listen(port, 'localhost', (err) => {
+    if (err) {
+      if (isDev) {
+        console.log(err);
+      }
+      return false;
     }
-    return false;
-  }
-  console.log(`Listening at http://localhost:${port}`);
+    console.log(`Listening at http://localhost:${port}`);
+  });
 });
