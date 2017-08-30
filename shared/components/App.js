@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect, NavLink } from 'react-router-dom';
 
 import Nav from './Nav';
-import FeaturedNews from './FeaturedNews';
-import LatestNews from './LatestNews';
+import asyncComponent from '../asyncComponent';
+
+const LatestNews = asyncComponent(() => (
+  import('./LatestNews').then(module => module.default)
+));
+
+const FeaturedNews = asyncComponent(() => (
+  import('./FeaturedNews').then(module => module.default)
+));
 
 const App = () => {
   return (
