@@ -1,15 +1,15 @@
-import React from 'react';
-import { renderToStaticMarkup } from 'react-dom/server';
-import { match, RouterContext } from 'react-router';
-import express from 'express';
-import path from 'path';
-import pug from 'pug';
-import webpack from 'webpack';
+const React = require('react');
+const { renderToStaticMarkup } = require('react-dom/server');
+const { match, RouterContext } = require('react-router');
+const express = require('express');
+const path = require('path');
+const pug = require('pug');
+const webpack = require('webpack');
 
-import { port, isDev } from './config';
-import webpackConfig from '../webpack/client.dev.js';
-import api from './api';
-import initDb from './db';
+const { port, isDev } = require('./config');
+const webpackConfig = require('../webpack/client.dev.js');
+const api = require('./api');
+const initDb = require('./db');
 
 const compiler = webpack(webpackConfig);
 const app = express();

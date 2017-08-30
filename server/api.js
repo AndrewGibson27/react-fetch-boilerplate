@@ -1,8 +1,8 @@
-import { Router } from 'express';
+const { Router } = require('express');
 
-import Story from './story';
-import Comment from './comment';
+const Story = require('./story');
+const Comment = require('./comment');
 
 const router = new Router();
 
-export default router;
+module.exports = router;

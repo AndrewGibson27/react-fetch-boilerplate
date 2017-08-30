@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const storySchema = mongoose.Schema({
   body: String,
@@ -7,4 +7,4 @@ const storySchema = mongoose.Schema({
 
 const Story = mongoose.model('Story', storySchema);
 
-export default Story;
+module.exports = Story;

@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
-import { dbHost } from './config';
+const { dbHost } = require('./config');
 
-export default function initDb(callback) {
+function initDb(callback) {
   mongoose.Promise = global.Promise;
 
   const dPromise = mongoose.connect(dbHost, {
@@ -13,3 +13,5 @@ export default function initDb(callback) {
     callback();
   });
 }
+
+module.exports = initDb;
