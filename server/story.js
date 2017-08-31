@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const storySchema = mongoose.Schema({
   body: String,
+  category: String,
   headline: String,
 });
 
