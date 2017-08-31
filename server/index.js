@@ -5,6 +5,7 @@ const express = require('express');
 const path = require('path');
 const pug = require('pug');
 const webpack = require('webpack');
+const bodyParser = require('body-parser');
 
 const { port, isDev } = require('./config');
 const webpackConfig = require('../webpack/client.dev.js');
@@ -14,10 +15,12 @@ const initDb = require('./db');
 const compiler = webpack(webpackConfig);
 const app = express();
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.static('public'));
-app.use('/api', api);
 app.set('view engine', 'pug');
 app.set('port', port);
+app.use('/api', api);
 
 if (isDev) {
   app.use(require('webpack-hot-middleware')(compiler));
