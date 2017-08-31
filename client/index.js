@@ -5,8 +5,6 @@ import { BrowserRouter } from 'react-router-dom';
 import config from './config';
 import App from '../shared/components/App';
 
-const { isDev } = config;
-
 render(
   <BrowserRouter>
     <App />
@@ -14,6 +12,6 @@ render(
   document.getElementById('root')
 );
 
-if (isDev) {
+if (config.isDev) {
   module.hot.accept();
 }
