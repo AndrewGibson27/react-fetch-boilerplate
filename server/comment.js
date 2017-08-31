@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 
-const commentSchema = mongoose.Schema({
+const { Schema } = mongoose;
+
+const commentSchema = Schema({
   body: String,
-  story_id: Number,
+  story_id: Schema.Types.ObjectId,
 });
 
 const Comment = mongoose.model('Comment', commentSchema);
