@@ -26,7 +26,7 @@ const asyncComponent = (getComponent => (
       const { Component } = this.state;
 
       if (Component) {
-        return <Component {...this.props} />
+        return <Component {...this.props} />;
       }
 
       return null;
