@@ -7,14 +7,8 @@ const FeaturedHome = asyncComponent(() => (
   import('./FeaturedHome').then(module => module.default)
 ));
 
-export default class FeaturedNews extends Component {
-  constructor(props) {
-    super(props);
-  }
+const FeaturedNews = () => (
+  <Route path="/featured" component={FeaturedHome} />
+);
 
-  render() {
-    return (
-      <Route path="/featured" component={FeaturedHome} />
-    );
-  }
-}
+export default FeaturedNews;
