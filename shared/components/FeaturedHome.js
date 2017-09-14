@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect, PromiseState } from 'react-refetch';
 import { Route, NavLink } from 'react-router-dom';
 
+import StoryList from './StoryList';
 import asyncComponent from '../asyncComponent';
 
-const FeaturedStory = asyncComponent(() => (
-  import('./FeaturedStory').then(module => module.default)
+const Story = asyncComponent(() => (
+  import('./Story').then(module => module.default)
 ));
 
 const FeaturedHome = ({
@@ -15,19 +16,14 @@ const FeaturedHome = ({
   if (storiesFetch.fulfilled) {
     return (
       <div>
-        <ul>
-          {storiesFetch.value.map(story => (
-            <Item
-              key={story._id}
-              data={story}
-              path={path}
-            />
-          ))}
-        </ul>
+        <StoryList
+          stories={storiesFetch.value}
+          path={path}
+        />
 
         <Route
           path={`${path}/:id`}
-          component={FeaturedStory}
+          component={Story}
         />
       </div>
     );
@@ -35,16 +31,6 @@ const FeaturedHome = ({
 
   return null;
 }
-
-const Item = ({
-  path,
-  data: { _id, headline }
-}) => (
-  <li>
-    <p>{headline}</p>
-    <NavLink to={`${path}/${_id}`}>Details</NavLink>
-  </li>
-);
 
 export default connect(props => ({
   storiesFetch: `/api/stories/?category=${props.match.path}`

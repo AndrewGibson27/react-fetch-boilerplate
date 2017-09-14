@@ -34,6 +34,7 @@ const Comments = ({
 
 export default connect(props => {
   const url = `/api/comments/?story_id=${props.storyId}`;
+
   return {
     commentsFetch: url,
 

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect, PromiseState } from 'react-refetch';
-import { Route, NavLink } from 'react-router-dom';
 
 import Comments from './comments';
 
-const FeaturedStory = ({
+const Story = ({
   storyFetch,
   match: { params: { id } }
 }) => {
@@ -27,4 +26,4 @@ const FeaturedStory = ({
 
 export default connect(props => ({
   storyFetch: `/api/stories/${props.match.params.id}`
-}))(FeaturedStory);
+}))(Story);

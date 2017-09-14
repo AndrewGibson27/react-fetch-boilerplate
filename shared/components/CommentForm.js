@@ -4,10 +4,7 @@ import { connect, PromiseState } from 'react-refetch';
 class CommentForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      value: ''
-    };
-
+    this.state = { value: '' };
     this._onChange = this._onChange.bind(this);
     this._onSubmit = this._onSubmit.bind(this);
   }
@@ -21,8 +18,8 @@ class CommentForm extends Component {
     }
   }
 
-  _onChange(e) {
-    this.setState({ value: e.target.value });
+  _onChange({ target: { value } }) {
+    this.setState({ value });
   }
 
   _onSubmit(e) {
