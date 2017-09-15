@@ -32,7 +32,9 @@ if (isDev) {
 
 initDb(() => {
   app.get('*', (req, res) => {
-    res.render('index', {});
+    res.render('index', {
+      env: process.env.NODE_ENV
+    });
   });
 
   app.listen(port, 'localhost', (err) => {
