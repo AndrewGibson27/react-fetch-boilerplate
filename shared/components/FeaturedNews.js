@@ -3,12 +3,12 @@ import { Route } from 'react-router-dom';
 
 import asyncComponent from '../asyncComponent';
 
-const FeaturedHome = asyncComponent(() => (
-  import('./FeaturedHome').then(module => module.default)
+const CategoryHome = asyncComponent(() => (
+  import('./CategoryHome').then(module => module.default)
 ));
 
 const FeaturedNews = () => (
-  <Route path="/featured" component={FeaturedHome} />
+  <Route path="/featured" component={CategoryHome} />
 );
 
 export default FeaturedNews;

@@ -5,11 +5,15 @@ import { Route, NavLink } from 'react-router-dom';
 import StoryList from './StoryList';
 import asyncComponent from '../asyncComponent';
 
+function stripCategorySlash(path) {
+  return path.slice(1);
+}
+
 const Story = asyncComponent(() => (
   import('./Story').then(module => module.default)
 ));
 
-const FeaturedHome = ({
+const CategoryHome = ({
   storiesFetch,
   match: { path }
 }) => {
@@ -32,6 +36,9 @@ const FeaturedHome = ({
   return null;
 }
 
-export default connect(props => ({
-  storiesFetch: `/api/stories/?category=${props.match.path}`
-}))(FeaturedHome);
+export default connect(props => {
+  const category = stripCategorySlash(props.match.path);
+  return {
+    storiesFetch: `/api/stories/?category=${category}`
+  };
+})(CategoryHome);
