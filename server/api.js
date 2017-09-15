@@ -1,7 +1,7 @@
 const { Router } = require('express');
 
-const Story = require('./story');
-const Comment = require('./comment');
+const Story = require('./models/story');
+const Comment = require('./models/comment');
 
 const router = new Router();
 const VALID_CATEGORIES = ['featured', 'latest'];
