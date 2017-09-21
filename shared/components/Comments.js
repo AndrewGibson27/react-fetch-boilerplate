@@ -12,6 +12,7 @@ const Comments = ({
   if (commentsFetch.fulfilled) {
     return (
       <div>
+        <h2>Comments</h2>
         <ul>
           {commentsFetch.value.map(comment => (
             <Comment

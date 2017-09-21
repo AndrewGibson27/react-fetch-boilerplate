@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+
+import { GridRowList, ColumnListItem } from '../styles/grid';
+import { NavAnchor } from '../styles/nav';
 
 const Nav = () => {
   return (
     <nav>
-      <NavLink to="/featured">Featured</NavLink>
-      <NavLink to="/latest">Latest</NavLink>
+      <GridRowList>
+        <ColumnListItem>
+          <NavAnchor to="/featured">Featured</NavAnchor>
+        </ColumnListItem>
+
+        <ColumnListItem>
+          <NavAnchor to="/latest">Latest</NavAnchor>
+        </ColumnListItem>
+      </GridRowList>
     </nav>
   );
 };

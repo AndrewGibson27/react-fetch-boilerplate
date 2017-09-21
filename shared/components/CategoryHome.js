@@ -4,6 +4,7 @@ import { Route, NavLink } from 'react-router-dom';
 
 import StoryList from './StoryList';
 import asyncComponent from '../asyncComponent';
+import { GridRow, ColumnThree } from '../styles/grid';
 
 function stripCategorySlash(path) {
   return path.slice(1);
@@ -19,17 +20,19 @@ const CategoryHome = ({
 }) => {
   if (storiesFetch.fulfilled) {
     return (
-      <div>
-        <StoryList
-          stories={storiesFetch.value}
-          path={path}
-        />
+      <GridRow>
+        <ColumnThree>
+          <StoryList
+            stories={storiesFetch.value}
+            path={path}
+          />
+        </ColumnThree>
 
         <Route
           path={`${path}/:id`}
           component={Story}
         />
-      </div>
+      </GridRow>
     );
   }
 

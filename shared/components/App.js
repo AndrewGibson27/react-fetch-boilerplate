@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import styled from 'styled-components';
 
 import Nav from './Nav';
 import asyncComponent from '../asyncComponent';
+import { Container } from '../styles/containers';
 
 const LatestNews = asyncComponent(() => (
   import('./LatestNews').then(module => module.default)
@@ -14,7 +16,7 @@ const FeaturedNews = asyncComponent(() => (
 
 const App = () => {
   return (
-    <div>
+    <Container>
       <Nav />
       <main>
         <Switch>
@@ -23,7 +25,7 @@ const App = () => {
           <Redirect to="/featured" />
         </Switch>
       </main>
-    </div>
+    </Container>
   );
 };
 
