@@ -3,7 +3,7 @@ import { connect, PromiseState } from 'react-refetch';
 import { Route, NavLink } from 'react-router-dom';
 
 import StoryList from './StoryList';
-import asyncComponent from '../asyncComponent';
+import asyncComponent from '../utils/asyncComponent';
 import { GridRow, ColumnThree } from '../styles/grid';
 
 function stripCategorySlash(path) {

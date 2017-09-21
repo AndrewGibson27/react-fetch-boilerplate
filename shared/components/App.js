@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Nav from './Nav';
-import asyncComponent from '../asyncComponent';
+import asyncComponent from '../utils/asyncComponent';
 import { Container } from '../styles/containers';
 
 const LatestNews = asyncComponent(() => (
