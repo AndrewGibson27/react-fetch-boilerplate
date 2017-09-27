@@ -1,9 +1,8 @@
 {
   "name": "react-fetch-boilerplate",
   "version": "0.1.0",
-  "description": "",
+  "description": "A boilerplate around React Router v4 and Heroku's react-refetch",
   "author": "Andrew Gibson <atgibson27@gmail.com>",
-  "main": [],
   "repository": {
     "type": "git",
     "url": "https://github.com/AndrewGibson27/react-fetch-boilerplate"
@@ -41,10 +40,6 @@
     "react-refetch": "^1.0.0",
     "react-router-dom": "^4.1.2",
     "styled-components": "^2.1.2"
-  },
-  "engines": {
-    "node": "^6.11.2",
-    "yarn": "^0.27.5"
   },
   "license": "MIT"
 }
