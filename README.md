@@ -17,7 +17,7 @@ The sample application is a ridiculously simple news home page with a hideous gr
 + Install MongoDB. Here are [instructions](https://docs.mongodb.com/master/tutorial/install-mongodb-on-os-x/) for a Mac.
 + Create a `.env` file according to what's in `env.sample` (right now, it's just the local database host)
 + Run MongoDB. I run the following commands in two separate Terminal tabs: `mongod` and `mongo`
-+ `yarn (npm) run dev`
++ `yarn (npm) start`
 
 The database is (obviously) empty at first, so you'll need to either add some entries from the command line or POST to the API endpoints.
 

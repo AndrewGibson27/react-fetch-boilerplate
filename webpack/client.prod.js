@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const saveLicense = require('uglify-save-license');
 
 const {
   CLIENT_ENTRY,
@@ -29,6 +30,10 @@ module.exports = {
       compress: {
         warnings: false,
       },
+
+      output: {
+        comments: saveLicense
+      }
     }),
   ],
 
